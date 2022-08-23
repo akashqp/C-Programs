@@ -1,9 +1,8 @@
-#include <stdio.h>
-int main()
+#include <stdio.h> 
+int main() 
 {
-	int x=65;
-	const unsigned char c=(int)x;
-	printf("%c\n",c);
-	
-	return 0;
+    int x=10,y=5;
+x-=y+1;
+printf("%d", x); 
+return 0; 
 }
