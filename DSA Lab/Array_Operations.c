@@ -115,6 +115,11 @@ int insertion_by_pos(int *add, int n)   // Inserting an element at a position
     scanf("%d",&val);
     printf("Enter Position to Insert the Value at(Considering 1st element has 1st position):");
     scanf("%d",&pos);
+    if((pos >= 0 && pos < n) == false)
+        {
+            printf("Invalid Position Entered\n");
+            return n;
+        }
 
     for(i = n-1; i >= pos-1; i--)
     {
@@ -126,7 +131,7 @@ int insertion_by_pos(int *add, int n)   // Inserting an element at a position
 
 int insertion_by_val(int *add, int n)   // Inserting an element after anotherr value
 {
-    int val, value;
+    int val, value, flag = 0;
     printf("Enter Value to be Inserted : ");
     scanf("%d",&value);
     printf("Enter Value after which to insert %d : ",value);
@@ -135,6 +140,7 @@ int insertion_by_val(int *add, int n)   // Inserting an element after anotherr v
     {   
         if(add[i] == val)
         {
+            flag = 1;
             for(int j = n-1; j > i; j--)
             {
                 add[j+1] = add[j];
@@ -143,6 +149,8 @@ int insertion_by_val(int *add, int n)   // Inserting an element after anotherr v
             n++;
         }
     }
+    if(flag == 0)
+        printf("Value not present in Array\n");
     return n;
 }
 
@@ -151,6 +159,11 @@ int deletion_by_pos(int *add, int n)    // Deleting an element from a position
     int pos;
     printf("Enter Position to Delete the Value from(Considering 1st element has 1st position):");
     scanf("%d",&pos);
+    if((pos >= 0 && pos < n) == false)
+        {
+            printf("Invalid Position Entered\n");
+            return n;
+        }
     for(int i = pos; i < n; i++)
     {
         add[i-1] = add[i];
@@ -160,20 +173,22 @@ int deletion_by_pos(int *add, int n)    // Deleting an element from a position
 
 int deletion_by_val(int *add, int n)    // Deleting certain values from the array
 {
-    int val;
+    int val, flag = 0;
     printf("Enter Values to be deleted from the Array:");
     scanf("%d",&val);
     for(int i = 0; i < n; i++)
     {   
         if(add[i] == val)
-        {
+        {   
+            flag = 1;
             for(int j=i; j<n; j++)
             {
                 add[j] = add[j+1];
             }
             n--;
         }
-        
     }
+    if(flag == 0)
+        printf("Value not present in Array\n");
     return n;
 }
