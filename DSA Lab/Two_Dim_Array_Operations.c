@@ -187,15 +187,17 @@ void Display(int *mat1,int *mat2, int *mat3, int *mat4, int *mat5, int row1, int
         }
         printf("\n");
     }
-    if(flag1 == 0)
-        return;
-    printf("\nMatrix 3:\n");
-    for(int i = 0; i < row1; i++)
+    if(flag1 == 1)
     {
-        for(int j = 0; j < col2; j++)
+        printf("\nMatrix 3:\n");
+        for(int i = 0; i < row1; i++)
         {
-            printf("%d\t",*mat3++);
+            for(int j = 0; j < col2; j++)
+            {
+                printf("%d\t",*mat3++);
+            }
+            printf("\n");
         }
-        printf("\n");
+        flag1 = 0;
     }
 }
