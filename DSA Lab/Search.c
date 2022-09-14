@@ -70,7 +70,7 @@ int binary(int *ptr, int n, int se)
     int end = n-1;
     int mid = (int)((beg + end)/2);
 
-    while(mid!=0)
+    while(low<=high)
     {
         if(ptr[mid] == se)
             return 1;
