@@ -5,7 +5,7 @@
 void creation();
 void display();
 void insertion_by_pos();
-void insetion_by_val();
+void insertion_by_val();
 void deletion_by_pos();
 void deletion_by_val();
 void search();
@@ -18,7 +18,7 @@ struct node
 
 void main()
 {
-    int ch;
+    int ch, ch1;
     while(true)
     {
         printf("Linked List Operations:\n\t1.Creation\n\t2.Insertion\n\t3.Deletion\n\t4.Search\n\t5.Display\n\t6.Exit\n\n");
@@ -98,35 +98,122 @@ void display()
 
 void insertion_by_pos()
 {
-    int pos, val;
+    new = (struct node*)malloc(sizeof(struct node*));
+    int pos;
     printf("Enter value to be inserted:");
-    scanf("%d",&val);
+    scanf("%d",&new->data);
     printf("Enter position where to insert the value:");
     scanf("%d",&pos);
+    if(pos==1)
+    {
+        new->link=head;
+        head=new;
+        return;
+    }
     ptr = head;
-    while(pos-1!=0)
+    while(pos-2!=0)
     {
         ptr=ptr->link;
         pos--;
     }
+    if(ptr->link == NULL)
+        new->link = NULL;
+    else
+        new->link=ptr->link; 
+    ptr->link = new;
 }
 
 void insertion_by_val()
 {
-
+    int val;
+    new = (struct node*)malloc(sizeof(struct node*));
+    printf("Enter value to be inserted:");
+    scanf("%d",&new->data);
+    printf("Enter value after which to be inserted:");
+    scanf("%d",&val);
+    ptr=head;
+    while(ptr->link!=NULL)
+    {
+        if(ptr->data == val)
+        {
+            new->link = ptr->link;
+            ptr->link=new;
+        }
+        ptr=ptr->link;
+    }
+    if(ptr->data == val)
+    {
+        ptr->link=new;
+        new->link=NULL;
+    }
 }
 
 void deletion_by_pos()
 {
-
+    int pos;
+    printf("Enter position to be deleted:");
+    scanf("%d",&pos);
+    if(pos == 1)
+    {
+        ptr=head;
+        head=head->link;
+        free(ptr);
+        return;
+    }
+    ptr=head;
+    new=ptr;
+    while(pos-1!=0)
+    {
+        new=ptr;
+        ptr=ptr->link;
+        pos--;
+    }
+    new->link=ptr->link;
+    free(ptr);
 }
 
 void deletion_by_val()
 {
-    
+    int val;
+    printf("Enter value to be deleted:");
+    scanf("%d",&val);
+    ptr=head;
+    new=ptr;
+    while(ptr->link!=NULL)
+    {
+        if(ptr->data == val)
+        {
+            new->link=ptr->link;
+            free(ptr);
+            ptr=new;
+        }
+        new = ptr;
+        ptr=ptr->link;
+    }
+    if(ptr->data == val)
+    {
+        new->link = NULL;
+        free(ptr);
+    }
 }
 
 void search()
 {
-
+    int se, count = 0;
+    printf("Enter value to be searched:");
+    scanf("%d",&se);
+    ptr=head;
+    while(ptr->link!=NULL)
+    {
+        if(ptr->data == se)
+        {
+            count++;
+        }
+        ptr=ptr->link;
+    }
+    if(ptr->data == se)
+    {
+        count++;
+    }
+    printf("Occurence of %d : %d\n",se,count);
 }
