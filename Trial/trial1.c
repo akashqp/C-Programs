@@ -1,24 +1,15 @@
-//Wap in c language to take 1 for red 2 for blue and 3 for grey color. Display wrong input or no color message for any other digit.
 #include <stdio.h>
-void color();
 void main()
 {
-	color();
-}
-void color()
-{
-	char col;
-	printf("Enter 1 for red 2 for blue and 3 for grey color:");
-	scanf("%c",&col);
-	switch(col)
-	{
-	case '1':printf("Red\n");
-		 break;
-	case '2':printf("Blue\n");
-		 break;	
-	default :printf("Wrong Input\n");
-		 break;
-	case '3':printf("Grey\n");
-		 break;
-	}
+	int arr[3][3];
+	arr[0][0] = 0;
+	arr[0][1] = 1;
+	arr[0][2] = 2;
+	arr[1][0] = 3;
+	arr[1][1] = 4;
+	arr[1][2] = 5;
+	arr[2][0] = 6;
+	arr[2][1] = 7;
+	arr[2][2] = 8;
+	printf("%ls",*(arr+2));
 }

@@ -4,14 +4,11 @@
 void main()
 {
     int n, nt, temp, max_val, j=0;;
-    printf("Enter number of Test Cases:");
     scanf("%d",&nt);
     while(j++<nt)
     {
-        printf("Enter Size of array:");
         scanf("%d",&n);
         int arr[n];
-        printf("Enter %d Elements:\n",n);
         for(int i=0;i<n;i++)
         {
             scanf("%d",&arr[i]);

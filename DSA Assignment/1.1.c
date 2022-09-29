@@ -23,13 +23,19 @@ void main()
         new = (struct node *)malloc(sizeof(struct node *));
         printf("Enter a data:");
         scanf("%d",&new->data);
-        printf("%p",&new->link);
         new->link = NULL;
         ptr->link = new;
         ptr = new;
     }
-    printf("Enter node to be deleted(1-n):");
-    scanf("%d",&pos);
-    ptr = *(&head->link + 20);
-    printf("%d",ptr->data);
+    ptr = head;
+    head = head->link;
+    free(ptr);
+    
+    ptr = head;
+    printf("New Linked List:\n");
+    while(ptr!=NULL)
+    {
+        printf("%d\t",ptr->data);
+        ptr=ptr->link;
+    }
 }
